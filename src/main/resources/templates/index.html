@@ -1,0 +1,25 @@
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Homepage</title>
+</head>
+<body>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+        </tr>
+        <tr th:each="person : ${persons}">
+             <td th:text="${person.id}"></td>
+             <td th:text="${person.name}"></td>
+            <td>
+                <button th:onclick="'window.location.href = \'' + @{/update/{id}(id=${person.id})} + '\''">Update</button>
+                <button th:onclick="'window.location.href = \'' + @{/delete/{id}(id=${person.id})} + '\''">Delete</button>
+            </td>
+        </tr>
+    </table>
+    <button th:onclick="'window.location.href = \'' + @{/new} + '\''">Create</button>
+</body>
+</html>
+
+
